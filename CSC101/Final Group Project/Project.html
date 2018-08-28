@@ -1,0 +1,164 @@
+<!--
+Project for CSC 101
+Group Members: Tatiana Hernandez, Samuel Zaldivar
+1/21/2018
+//-->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!--Link CSS and Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<title>City Dinner</title>
+
+<script>
+
+	var i = 0;
+
+	//Call this function once the page loads
+	window.onload = function(){
+		changeMenu();
+	};
+
+	function changeMenu(){
+		/*
+		This function changes the content in the #menuContent Div. It shows different sections of the menu.
+		*/
+		i++;
+
+		if(i==1){
+
+			document.getElementById("menuContent").innerHTML = "<h2>Drinks/shakes</h2>" +
+			" <h2 id='food'>Orange juice..............................................................$4.50</h2>" +
+			"<h2 id='food'>Apple juice.................................................................$4.50</h2>" +
+			"<h2 id='food'>Pinapple juice............................................................$3.50</h2>" +
+			"<h2 id='food'>Lemon juice...............................................................$4.50</h2>" +
+			"<h2 id='food'>Pina colada................................................................$7.00</h2>" +
+			"<h2 id='food'>Mago juice.................................................................$4.50</h2>" +
+			"<h2 id='food'>Hot chocolate.............................................................$3.50</h2>" +
+			"<h2 id='food'>Coffee........................................................................$3.75</h2>" +
+			"<h2 id='food'>Banana Split Shake....................................................$5.00</h2>" +
+			"<h2 id='food'>Mango Shake.............................................................$5.00</h2>" +
+			"<h2 id='food'>Papaya Shake.............................................................$5.00</h2>" +
+			"<h2 id='food'>Strawberry Shake........................................................$5.00</h2>";
+		}
+		else if(i==2){
+
+			document.getElementById("menuContent").innerHTML = "<h2>Breakfast</h2>" +
+			"<h2 id='food'>Waffles....................................................................$8.00</h2>" +
+			"<h2 id='food'>Pancakes..................................................................$8.00</h2>" +
+			"<h2 id='food'>Omelette Cheese.......................................................$8.50</h2>" +
+			"<h2 id='food'>Scrambled Eggs..........................................................$8.50</h2>" +
+			"<h2 id='food'>Fruits..........................................................................$8.50</h2> " +
+			"<h2 id='food'>Yogurt........................................................................$3.75</h2> " +
+			"<h2 id='food'>Sandwiches................................................................$3.00</h2> " +
+			"<h2 id='food'>Bacon and Potatoes Veggies.......................................$7.75</h2>";
+		}
+		else if(i==3){
+
+			document.getElementById("menuContent").innerHTML ="<h2>Lunch</h2>" +
+			"<h2 id='food'>Rice, beans, chicken..................................................$12.00</h2>" +
+			"<h2 id='food'>Mangu........................................................................$6.00</h2>" +
+			"<h2 id='food'>Mofongo....................................................................$7.75</h2>" +
+			"<h2 id='food'>Arepas.......................................................................$5.50</h2>" +
+			"<h2 id='food'>Salad.........................................................................$5.50</h2>" +
+			"<h2 id='food'>Viste Encebollado....................................................$10.50</h2>" +
+			"<h2 id='food'>Pupusa....................................................................$10.00</h2>" +
+			"<h2 id='food'>Sopa de Pata...........................................................$10.00</h2>" +
+			"<h2 id='food'>Tamales....................................................................$8.00</h2>" +
+			"<h2 id='food'>Pasteles....................................................................$8.50</h2>" +
+			"<h2 id='food'>Panes Rellenos..........................................................$7.75</h2>" +
+			"<h2 id='food'>Yuca Frita.................................................................$7.50</h2>";
+		}
+		else{
+
+			document.getElementById("menuContent").innerHTML="<h2>Wines</h2>" +
+			"<h2 id='food'>Sangria....................................................................$25.00</h2>" +
+			"<h2 id='food'>Adriano....................................................................$22.00</h2>" +
+			"<h2 id='food'>Sacerre....................................................................$20.00</h2>" +
+			"<h2 id='food'>Chiati.......................................................................$22.00</h2>" +
+			"<h2 id='food'>Domilano.................................................................$25.00</h2>" +
+			"<h2 id='food'>Champagne..............................................................$28.00</h2>";
+			i = 0;
+		}
+	}
+</script>
+</head>
+<body>
+
+		<!-- 	Header	-->
+	<div id="headerContainerDiv">
+		<div id="headerDiv">
+			<h1 id="titleHead">City Dinner</h1>
+			<p id="motto">Open 24/7 becuase this city never sleeps!</p>
+		</div>
+		<img src="picture.jpg" id="headerPic" width="100%" height="100%">
+	</div>
+		<!-- End of Header -->
+
+		<!--About Us -->
+
+		<div id="aboutUsDiv">
+			<h1>About Us</h1>
+			<h3 id="about">Since 2014 we were thinking about spreading our culture. The amazing Idea came to our minds and we thought, <q>Opening a restaurant.</q>
+				At the beginning it wasn’t easy but with a lot of effort, dedication, time, and patience we achieved our goal.
+				This is not only a restaurant, this is a place where you can feel comfortable, it’s like home.
+				We’re here to make sure that out clients receive the best treatment so they can have the biggest smile.
+
+				-City Dinner</h3>
+		</div>
+		<!--End of About Us -->
+
+		<!-- Menu -->
+	<div id="menuContainerDiv">
+		<div id="menuDiv">
+			<h1 id="menuTitle">Menu</h1>
+			<div id="menuContent"></div>
+			<br>
+			<input type="button" value="next" onclick="changeMenu()">
+			<br>
+			<br>
+		</div>
+		<img src="newPic.jpg" id="menuPic" width="100%" height="100%">
+	</div>
+		<!-- End of Menu -->
+
+		<!--Contact -->
+
+		<div id="contactDiv">
+			<h1>Conact</h1>
+			<p id="motto">Come visit us, we're always open!</p>
+
+			<div id="map" style="width:450px;height:450px;background:yellow"></div>
+			<script>
+				function myMap() {
+					var mapOptions = {
+			    center: new google.maps.LatLng(40.7, -73.9),
+			    zoom: 10,
+			    mapTypeId: google.maps.MapTypeId.MAP
+				}
+				var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+				}
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClYms8zaJwFDONZ0AnAN2-r7JRILTIllo&callback=myMap"></script>
+
+			<div id="contactInfo">
+
+				<h1>Address</h1>
+				<p id="info">55-55 42nd st. New York, New York. 10036</p>
+
+				<h1>Phone</h1>
+				<p id="info">555-555-5555</p>
+			</div>
+
+		</div>
+		<!-- End of Contact -->
+</body>
+</html>
