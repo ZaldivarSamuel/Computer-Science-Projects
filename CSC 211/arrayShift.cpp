@@ -9,8 +9,7 @@ using namespace std;
 //Function prototypes
 void getArrayLength();
 void fillArray(int*);
-void rotateRight(int, int*);
-void rotateLeft(int, int*);
+void rotate(int, int*);
 void displayArray(int*);
 
 //Global variables
@@ -22,24 +21,18 @@ int main(){
     getArrayLength();
     int arr[arrayLength];
     fillArray(arr);
-    
+
     //How much rotation does the user want to rotate
     int rotation;
     cout << "Enter rotation number: ";
     cin >> rotation;
-    
+
     cout << endl << "Old array: " << endl;
     displayArray(arr);
     cout << endl;
-    
-    //positive rotate right, negative rotate left
-    if(rotation > 0){
-        rotateRight(rotation, arr);
-    }
-    else{
-        rotateLeft(rotation, arr);
-    }
-    
+
+    rotate(rotation, arr);
+
     //Output new array
     cout << "New array: " << endl;
     displayArray(arr);
@@ -70,41 +63,43 @@ void fillArray(int *arr){
     }
 }
 
-void rotateRight(int rotationNum, int *arr){
+
+void rotate(int rotationNum, int * arr){
     
-    for(int r = 0; r < rotationNum; r++){
+    //Loop for number of rotations
+    for(int r = 0; r < abs(rotationNum); r++){
         
-        int lastElement = *(arr + arrayLength - 1);
-        
-        //place holder for the next element to change. We have this so we dont loose the value of the element
+        //save the first element
         int temp = *(arr + 0);
         
-        for(int i = 0; i < arrayLength - 1; i++){
+        //if right rotations
+        if(rotationNum > 0){
             
-            int numToChange = temp;
-            temp = *(arr + i + 1);  //save temp as the next element
+            //from the last element down to the second element
+            for(int i = arrayLength - 1; i >= 1; i--){
+                
+                int index = (i + 1) % arrayLength;
+                
+                //swap
+                *(arr + index) = *(arr + i);
+            }
+            //set the secound element to temp
+            *(arr + 1) = temp;
+        }
+        //left rotation
+        else{
+            //from the secound element to the last element
+            for(int i = 1; i < arrayLength; i++){
+                
+                int index = (i - 1) % arrayLength;
+                
+                //swap
+                *(arr + index) = *(arr + i);
+            }
             
-            *(arr + i + 1) = numToChange;
+            //set the last element to temp
+            *(arr + arrayLength - 1) = temp;
         }
-        
-        //Save the first element as the saved last element
-        *(arr + 0) = lastElement;
-    }
-}
-
-void rotateLeft(int rotationNum, int *arr){
-    
-    for(int r = rotationNum; r < 0; r++){
-        
-        //save the first element of the array
-        int firstElement = *(arr + 0);
-        
-        for(int i = 1; i < arrayLength; i ++){
-            *(arr + i - 1) = *(arr + i);
-        }
-        
-        //Save the last element of the array as the saved first element
-        *(arr + arrayLength - 1) = firstElement;
     }
 }
 
