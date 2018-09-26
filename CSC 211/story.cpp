@@ -13,6 +13,8 @@ struct Person{
     Person *farther;
     Person *mother;
     
+    Person(){} //default constructor
+    
     Person(string firstName, string lastName, int age, string occupation, string city){
         
         this->firstName = firstName;
@@ -22,40 +24,57 @@ struct Person{
         this->city = city;
     }
     
+    ~Person(){
+        cout << this->firstName << " has died" << endl;
+    }
+    
     void addAge(int amount){
         this->age += amount;
         cout << this->firstName << " is now " << this->age << endl;
     }
 };
 
-void fastFoward(Person*,int);
+void fastFoward(Person**, int);
+
+int NUM_OF_PEOPLE = 3;
 
 int main(){
     
+    //People
     Person mike("Mike", "Doe", 47, "Banker", "NYC");
+    Person mary("Mary", "Doe", 45, "Secretary", "NYC");
     Person john("John", "Doe", 20, "Student", "NYC");
     
-    cout << john.firstName << " is a " << john.age << " year old " << john.occupation << " in " << john.city << endl;
+    //Pointers
+    Person *mikeP = &mike;
+    Person *maryP = &mary;
+    Person *johnP = &john;
     
-    john.farther = &mike;
+    johnP->farther= mikeP;
+    johnP->mother = maryP;
     
-    cout << john.firstName << "'s farther is " << john.farther->firstName << " who is a " << john.farther->occupation << endl;
+    cout << johnP->firstName << " is a " << johnP->age << " year old " << johnP->occupation << " in " << johnP->city << endl;
+    cout << johnP->firstName << "'s farther is " << johnP->farther->firstName << " and his mother is " << johnP->mother->firstName << endl << endl;
     
-    Person family[2] = {mike, john};
-    fastFoward(family, 5);
+    Person *people[NUM_OF_PEOPLE];
+    *(people + 0) = mikeP;
+    *(people + 1) = maryP;
+    *(people + 2) = johnP;
     
-    john.occupation = "Computer Programmer";
+    fastFoward(people, 5);
     
-    cout << endl << john.firstName << " is now a " << john.occupation << endl;
+    johnP->occupation = "Computer programmer";
+    cout << johnP->firstName << " is now a " << johnP->occupation << endl;
     
     cout << endl;
 }
 
-void fastFoward(Person *people, int years){
-   
-    cout << endl << "Fast foward " << years << " years..." << endl;
+void fastFoward(Person **people, int years){
     
-    for(int i = 0; i < 2; i++){
-        (*(people + i)).addAge(years);
+    cout << years << " years later..." << endl;
+    
+    for(int i = 0; i < NUM_OF_PEOPLE; i++){
+        (*(*(people + i))).addAge(years);
     }
+    cout << endl;
 }
